@@ -33,14 +33,18 @@ clearButton.addEventListener('click', (e) => {
 
 randomButton.addEventListener('click', (e)=>{
 	let randomColor = getRandomColor();
+	if(mouseDown){
 	draw(randomColor);
+	}
 });
 
 rainbowButton.addEventListener('click', (e) =>{
 	let gridSquares = document.querySelectorAll('.content');
 	gridSquares.forEach((square) =>{
-		square.addEventListener('mousedown', (e)=>{
+		square.addEventListener('mouseenter', (e)=>{
+			if(mouseDown){
 			square.style.backgroundColor = getRandomColor();
+			}
 		})
 	})
 });
@@ -61,6 +65,14 @@ shadesButton.addEventListener('click', (e)=>{
 		})
 	})
 });
+
+var mouseDown = 0;
+document.body.onmousedown = function() { 
+  ++mouseDown;
+}
+document.body.onmouseup = function() {
+  --mouseDown;
+}
 
 function getRandomColor() {
   let letters = '0123456789ABCDEF';
