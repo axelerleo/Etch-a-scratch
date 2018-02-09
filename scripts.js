@@ -33,9 +33,7 @@ clearButton.addEventListener('click', (e) => {
 
 randomButton.addEventListener('click', (e)=>{
 	let randomColor = getRandomColor();
-	if(mouseDown){
 	draw(randomColor);
-	}
 });
 
 rainbowButton.addEventListener('click', (e) =>{
@@ -54,6 +52,7 @@ shadesButton.addEventListener('click', (e)=>{
 	gridSquares.forEach((square) =>{
 		let opacity = 0;
 		square.addEventListener('mouseenter', (e)=>{
+			if(mouseDown){
 			if(opacity != 0){
 				square.style.backgroundColor = `rgba(30, 30, 30, ${opacity/10})`;
 				opacity ++;
@@ -61,6 +60,7 @@ shadesButton.addEventListener('click', (e)=>{
 			else{ //first time mouse passes over
 				square.style.backgroundColor = 'rgba(30, 30, 30, 0.05)';
 				opacity++;
+			}
 			}
 		})
 	})
