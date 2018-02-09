@@ -66,12 +66,12 @@ shadesButton.addEventListener('click', (e)=>{
 	})
 });
 
-var mouseDown = 0;
+var mouseDown = false;
 document.body.onmousedown = function() { 
-  ++mouseDown;
+  mouseDown = true;
 }
 document.body.onmouseup = function() {
-  --mouseDown;
+  mouseDown = false;
 }
 
 function getRandomColor() {
