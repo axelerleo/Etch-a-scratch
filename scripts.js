@@ -39,7 +39,7 @@ randomButton.addEventListener('click', (e)=>{
 rainbowButton.addEventListener('click', (e) =>{
 	let gridSquares = document.querySelectorAll('.content');
 	gridSquares.forEach((square) =>{
-		square.addEventListener('mouseenter', (e)=>{
+		square.addEventListener('mousedown', (e)=>{
 			square.style.backgroundColor = getRandomColor();
 		})
 	})
