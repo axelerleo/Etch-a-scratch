@@ -1,5 +1,19 @@
 const container = document.querySelector('#container');
 
+var mouseDown = false;
+
+container.onmousedown = function() { 
+
+  mouseDown = true;
+
+}
+
+container.onmouseup = function() {
+
+  mouseDown = false;
+
+}
+
 createGrid(16); //initial grid
 draw();
 
@@ -50,6 +64,7 @@ shadesButton.addEventListener('click', (e)=>{
 	gridSquares.forEach((square) =>{
 		let opacity = 0;
 		square.addEventListener('mouseenter', (e)=>{
+			if(mouseDown){
 			if(opacity != 0){
 				square.style.backgroundColor = `rgba(30, 30, 30, ${opacity/10})`;
 				opacity ++;
@@ -58,7 +73,8 @@ shadesButton.addEventListener('click', (e)=>{
 				square.style.backgroundColor = 'rgba(30, 30, 30, 0.05)';
 				opacity++;
 			}
-		})
+		}
+	})
 	})
 });
 
@@ -86,6 +102,7 @@ function draw(colorName){
 }
 
 function createGrid(num){
+	mouseDown = false;
 	if (num == undefined) return;
 	for(let i = 0; i < num; i++){
 		createRow(num);
