@@ -2,16 +2,17 @@ const container = document.querySelector('#container');
 
 var mouseDown = false;
 
-container.onmousedown = function() { 
+container.onmousedown = function(event) { 
 
-  mouseDown = true;
+  	mouseDown = true;
+  	event.preventDefault();
 
 }
 
-container.onmouseup = function() {
+container.onmouseup = function(event) {
 
-  mouseDown = false;
-
+  	mouseDown = false;
+	event.preventDefault();
 }
 
 createGrid(16); //initial grid
@@ -92,12 +93,15 @@ function draw(colorName){
 	gridSquares.forEach((square) => {
 
 		square.addEventListener('mouseenter', (e) =>{
-			if(colorName == undefined){
-				square.style.backgroundColor = 'white';
-			}else{
-				square.style.backgroundColor = colorName;
+			if(mouseDown){
+				if(colorName == undefined){
+					square.style.backgroundColor = 'white';
+				}else{
+					square.style.backgroundColor = colorName;
+				}
 			}
 		})
+
 	});
 }
 
